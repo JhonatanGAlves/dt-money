@@ -1,5 +1,13 @@
-import { HeaderContainer } from "./styles";
+import { HeaderContainer, HeaderContent, NewTransactionButton } from "./styles";
+import logoImg from "../../assets/logo.svg";
 
-export const Transaction = () => {
-  return <HeaderContainer></HeaderContainer>;
+export const Header = () => {
+  return (
+    <HeaderContainer>
+      <HeaderContent>
+        <img src={logoImg} alt="" />
+        <NewTransactionButton>Nova transação</NewTransactionButton>
+      </HeaderContent>
+    </HeaderContainer>
+  );
 };
