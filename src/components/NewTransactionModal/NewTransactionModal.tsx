@@ -1,5 +1,5 @@
-import { Content } from "./styles";
+import { NtmContent } from "./styles";
 
 export const NewTransactionModal = () => {
-  return <Content></Content>;
+  return <NtmContent></NtmContent>;
 };
