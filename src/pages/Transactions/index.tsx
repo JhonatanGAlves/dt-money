@@ -6,13 +6,10 @@ import { TransactionsContext } from "../../contexts/TransactionsContext";
 import { dateFormatter, priceFormatter } from "../../utils/formatter";
 import { useContextSelector } from "use-context-selector";
 import { Trash } from "phosphor-react";
+import { ConfirmDeletionModal } from "../../components/ConfirmDeletionModal/ConfirmDeletionModal";
+import * as AlertDialog from "@radix-ui/react-alert-dialog";
 
 export const Transactions = () => {
-  const deleteTransaction = useContextSelector(
-    TransactionsContext,
-    (context) => context.deleteTransaction
-  );
-
   const transactions = useContextSelector(TransactionsContext, (context) => {
     return context.transactions;
   });
@@ -39,7 +36,13 @@ export const Transactions = () => {
                 <td>{t.category}</td>
                 <td>{dateFormatter.format(new Date(t.createdAt))}</td>
                 <td>
-                  <Trash onClick={() => deleteTransaction(t.id)} />
+                  <AlertDialog.Root>
+                    <AlertDialog.Trigger asChild>
+                      <Trash />
+                    </AlertDialog.Trigger>
+
+                    <ConfirmDeletionModal transactionId={t.id} />
+                  </AlertDialog.Root>
                 </td>
               </tr>
             ))}
