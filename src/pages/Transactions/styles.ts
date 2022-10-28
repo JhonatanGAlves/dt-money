@@ -25,6 +25,17 @@ export const TableContent = styled.table`
     :last-child {
       border-radius: 0 6px 6px 0;
     }
+
+    svg {
+      margin-top: 3px;
+      cursor: pointer;
+      color: ${({ theme }) => theme["red-500"]};
+
+      :hover {
+        color: ${({ theme }) => theme["red-300"]};
+        transition: color 0.2s;
+      }
+    }
   }
 `;
 
